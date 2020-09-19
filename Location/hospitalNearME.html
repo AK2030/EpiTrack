@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Searches</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script> // The API Key still needs to be added.
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      let map;
+      let service;
+      let infowindow;
+
+      function initMap() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            position => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+        const myLocation = new google.maps.LatLng(pos[0], pos[1]); //the map now records our current location
+        infowindow = new google.maps.InfoWindow();
+        map = new google.maps.Map(document.getElementById("map-canvas"), {
+          center: myLocation,
+          zoom: 15
+        });
+        var request = {
+          location: myLocation,
+          radius: 200
+          types: ["hospital", "health", "COVID-19 testing center"]
+        };
+        service = new google.maps.places.PlacesService(map);
+        service.findPlaceFromQuery(request, (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (let i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            } //places markers of all those hospitals surrounding us.
+
+            map.setCenter(results[0].geometry.location);
+          } //people can now see the closest hospitals
+        });
+      }
+
+      function createMarker(place) {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location
+        });
+        google.maps.event.addListener(marker, "click", () => {
+          infowindow.setContent(place.name);
+          infowindow.open(map);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
