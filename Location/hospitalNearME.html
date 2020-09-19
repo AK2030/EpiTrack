@@ -32,18 +32,24 @@
       var service;
       var infowindow;
 
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
       function initialize() {
-  var pyrmont = new google.maps.LatLng(19.107567, 72.8335); // sample location to start with: Mumbai, India
+  var myLocation = new google.maps.LatLng(pos[lat], pos[lng]); // sample location to start with: Mumbai, India
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: pyrmont,
+    center: myLocation,
     zoom: 15
   });
 
   var request = {
-    location: pyrmont,
+    location: myLocation,
     radius: 200,
-    types: ['hospital', 'health'] // this is where you set the map to get the hospitals and health related places
+    types: ['hospital', 'health', 'COVID-19 testing center'] // this is where you set the map to get the hospitals and health related places
   };
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
