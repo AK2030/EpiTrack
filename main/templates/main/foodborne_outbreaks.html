@@ -1,0 +1,243 @@
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+
+		/* BASIC */
+
+		* {
+		    box-sizing: border-box;
+		    outline: none;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		html, body {
+		    height: 100%;
+		    font-family: "Poppins", sans-serif;
+		    background-color: #56baed;
+		}
+
+		a, a:visited, a:focus, a:active, a:link {
+		    text-decoration: none;
+		    outline: 0;
+		}
+
+		a {
+		    color: currentColor;
+		    transition: .2s ease-in-out;
+		}
+
+		ul {
+		    padding: 0;
+		    list-style: none;
+		}
+
+		/* CONTENT */
+
+		main {
+		    padding: 90px 20px 0;
+		    
+		    min-height: 100%;
+		    margin-bottom: 3em;
+		    
+		}
+
+		.content {
+			background-color: white;
+			border-radius: 10px 10px 10px 10px;
+			text-align: center;
+			margin-top: 2.5em;
+			padding: 1em 2em 0.1em 2em;
+			margin-bottom: 1em;
+		}
+
+		@media only screen and (max-width: 1000px) {
+			main {
+				flex-direction:column;
+			}
+		}
+
+			
+		.content h1 {
+			margin-top: 0.75em;
+		}
+
+		/* BUTTON */
+
+		input[type=submit] {
+			background-color: #56baed;
+			border: none;
+			color: white;
+			padding: 15px 50px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 13px;
+			border-radius: 5px 5px 5px 5px;
+			transition: all 0.3s ease-in-out;
+			margin-bottom: 5px;
+		}
+
+		input[type=submit]:hover {
+			background-color: #39ace7;
+		}
+
+		input[type=submit]:active {
+			transform: scale(0.95);
+		}
+
+		 .wrapper {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            width: 100%;
+            padding-top: 2em;
+
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 100%;
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            
+        }
+
+
+	</style>
+</head>
+<body>
+{% extends "main/header.html" %}
+
+{% block content %}
+	<main>
+		<h1>Recent Foodborne Outbreaks</h1>
+		<div class = "wrapper">
+			<div id = "formContent">
+		<p>
+			<h3>Salmonella Outbreak - Peaches</h3><br/>
+August 2020<br/>
+
+Reported Cases: 78<br/>
+States: 12<br/>
+Hospitalizations: 23<br/>
+Deaths: 0<br/>
+Recall: Yes<br/>
+_________________________________________________________________________________________________________<br/>
+Do not eat, serve, or sell recalled loose or bagged peaches packed or supplied by Prima Wawona or Wawona Packing Company LLC, or food made with these peaches. <br/>
+
+Check your homes for recalled peaches packed or supplied by Prima Wawona or Wawona Packing Company LLC, and for recalled food made with these peaches, such as peach salsa.<br/>
+Don’t eat recalled peaches. Throw them out or return them to the store.<br/>
+
+Recalled peaches were sold at different stores under various brand names.<br/>
+Peaches were sold in bags and individually (bulk/loose peaches).<br/>
+If you can’t tell where the peaches are from, don’t eat them. Throw them out.<br/>
+Don’t eat food made with these peaches.<br/>
+
+
+Check your kitchen and refrigerator for recalled peaches. If you freeze fresh peaches to use later, check your freezer, too.<br/>
+_________________________________________________________________________________________________________<br/>
+
+Companies that recalled peaches or food made with them include Aldi, Food Lion, Hannaford, Kroger (and affiliated retailers: City Market, Fry’s, Food 4 Less, Foods Co., Jay-C, King Soopers, Ralphs, and Smiths), Russ Davis Wholesale, Target, Walmart, and Wegmans. Other retailers also may have sold these peaches.<br/>
+_________________________________________________________________________________________________________<br/>
+
+The recalled bulk/loose peaches were sold in grocery stores in various ways, typically loose in bins for shoppers to select.<br/>
+
+The peaches may have the following stickers with Price Look Up (PLU) numbers on them: 4037, 4038, 4044, 4401, 94037, 94038, 94044, 94401. However, not all peaches with these PLU codes are supplied by Prima Wawona. If you are unsure of the brand or variety of your loose peaches, ask your retailer or supplier or throw them out.
+
+_________________________________________________________________________________________________________<br/>
+Brands and product codes for recalled peaches sold in bags include:<br/>
+
+Wawona Peaches – 033383322001<br/>
+Wawona Organic Peaches – 849315000400<br/>
+Prima® Peaches – 766342325903<br/>
+Organic Marketside Peaches – 849315000400<br/>
+Kroger Peaches – 011110181749<br/>
+Wegmans Peaches – 077890490488<br/>
+</div>
+</div>
+
+<div class = "wrapper">
+			<div id = "formContent">
+<h3>Salmonella Outbreak - Onions</h3><br/>
+August 2020<br/>
+
+<p>Reported Cases: 1,012<br/>
+States: 47<br/>
+Hospitalizations: 136<br/>
+Deaths: 0<br/>
+Recall: Yes<br/>
+_________________________________________________________________________________________________________<br/>
+Do not eat, serve, or sell recalled onions supplied by Thomson International, Inc., or any foods made with recalled onions. Recalled onion types include red, white, yellow, and sweet yellow varieties.<br/>
+Foods made with recalled onions, such as cheese dips and spreads, salsas, and chicken salads, have also been recalled. These foods were sold at multiple grocery store chains. View the list of recalled onions and foods.<br/>
+
+Check your home for onions and other foods recalled by Thomson International, Inc. and several other companies, including Food Lion, Giant Eagle, Kroger, Publix, Ralph’s, Trader Joe’s, and Walmart.<br/>
+
+If you can’t tell where your onions are from, don’t eat them or any food made with them. Throw them away.
+If you used recalled onions to make any other food, don’t eat the food. Throw it away, even if some of it was eaten and no one got sick.<br/>
+
+
+Wash and sanitize any surfaces that may have come in contact with onions or their packaging, such as countertops, storage bins, refrigerator drawers, knives, and cutting boards.<br/>
+When you order food from a restaurant or shop for food, check to make sure they are not serving or selling any recalled onions, foods prepared with recalled onions, or any recalled foods such as salads, sandwiches, tacos, salsas, and dips.<br/>
+
+If they don’t know where their onions are from, don’t buy the product or order the food.<br/>
+
+_________________________________________________________________________________________________________<br/>
+
+
+Advice to Restaurants, Retailers, and Suppliers<br/>
+
+Restaurants and retailers should not serve or sell recalled onions or foods prepared with these onions.<br/>
+
+Check the list of recalled products.<br/>
+If you don’t know where your onions are from, don’t serve or sell them.<br/>
+Clean and sanitize all surfaces that onions have come in contact with, including cutting boards, countertops, slicers, utensils, and storage bins.<br/>
+_________________________________________________________________________________________________________<br/>
+
+
+Suppliers, distributors, and others in the supply chain should not ship or sell recalled onions supplied by Thomson International, Inc. or foods prepared with these onions.
+<br/>
+Suppliers and distributors that repackage raw onions should clean and sanitize any surfaces and storage bins that may have come in contact with recalled onions.<br/>
+View the list of recalled onions and foods.
+</div>
+</div>
+
+
+<div class = "wrapper">
+			<div id = "formContent">
+<h3>Salmonella Outbreak - Backyard Poultry</h3><br/>
+May-July 2020<br/>
+
+Reported Cases: 938<br/>
+States: 48<br/>
+Hospitalizations: 151<br/>
+Death: 1<br/>
+
+_________________________________________________________________________________________________________<br/>
+Since the last update on June 24, 2020, 473 more ill people were added to this investigation.<br/>
+As of July 28, 2020, 938 people infected with one of the outbreak strains of Salmonella have been reported from 48 states.<br/>
+
+151 people (33% of those with information available) have been hospitalized.<br/>
+One death in Oklahoma has been reported.<br/>
+28% of ill people are children younger than 5 years of age.<br/>
+
+
+Epidemiologic and laboratory evidence shows that contact with backyard poultry (such as chicks and ducklings) is the likely source of these outbreaks.<br/>
+
+In interviews with 409 ill people, 303 (74%) reported contact with chicks and ducklings.<br/>
+People reported obtaining chicks and ducklings from several sources, including agricultural stores, websites, and hatcheries.<br/>
+Testing of backyard poultry and their environments (such as backyard coops) in Kentucky and Oregon found three of the outbreak strains.
+<br/>
+</div>
+</div>
+		</p>
+	</main>
+	<footer>
+		{% include "main/footer.html" %}
+	</footer>
+</body>
+{% endblock %}
