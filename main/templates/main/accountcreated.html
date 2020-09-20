@@ -1,0 +1,162 @@
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<style>
+
+		@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+		/* BASIC */
+
+		html {
+		  background-color: #56baed;
+		}
+
+		body {
+		  font-family: "Poppins", sans-serif;
+		  height: 100vh;
+		}
+
+		a {
+		  color: #92badd;
+		  display:inline-block;
+		  text-decoration: none;
+		  font-weight: 400;
+		}
+
+		h2 {
+		  text-align: center;
+		  font-size: 16px;
+		  font-weight: 600;
+		  display:inline-block;
+		  margin: 6px 8px 10px 8px; 
+		  color: #cccccc;
+		}
+
+		/* MAIN STRUCTURE */
+
+		.wrapper {
+		  display: flex;
+		  align-items: center;
+		  flex-direction: column; 
+		  justify-content: center;
+		  width: 100%;
+		  min-height: 100%;
+		  padding: 20px;
+		}
+
+		#formContent {
+		  border-radius: 10px 10px 10px 10px;
+		  background: #fff;
+		  padding: 30px;
+		  width: 90%;
+		  max-width: 450px;
+		  position: relative;
+		  padding: 0px;
+		  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+		  text-align: center;
+		}
+
+		/* TAB */
+
+		h2.active {
+		  color: #0d0d0d;
+		  border-bottom: 2px solid #5fbae9;
+		}
+
+		/* BUTTON */
+
+		input[type=button] {
+		  background-color: #56baed;
+		  border: none;
+		  color: white;
+		  padding: 15px 80px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 13px;
+		  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+		  border-radius: 5px 5px 5px 5px;
+		  margin: 5px 20px 40px 20px;
+		  transition: all 0.3s ease-in-out;
+		}
+
+		input[type=button]:hover {
+		  background-color: #39ace7;
+		}
+
+		input[type=button]:active {
+		  transform: scale(0.95);
+		}
+
+		/* FADING ANIMATIONS */
+
+		.fadeInDown {
+		  animation-name: fadeInDown;
+		  animation-duration: 1s;
+		  animation-fill-mode: both;
+		}
+
+		@-webkit-keyframes fadeInDown {
+		  0% {
+		    opacity: 0;
+		    transform: translate3d(0, -100%, 0);
+		  }
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		  }
+		}
+
+		@keyframes fadeInDown {
+		  0% {
+		    opacity: 0;
+		    transform: translate3d(0, -100%, 0);
+		  }
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		  }
+		}
+
+		@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+		@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+		@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+		.fadeIn {
+		  opacity:0;
+		  animation:fadeIn ease-in 1;
+		  animation-fill-mode:forwards;
+		  animation-duration:1s;
+		}
+
+		.fadeIn.second {
+		  animation-delay: 0.6s;
+		}
+
+		/* OTHERS */
+
+		*:focus {
+		    outline: none;
+		} 
+
+		* {
+		  box-sizing: border-box;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="confetti"></div>
+	<div class="wrapper fadeInDown">
+    	<div id="formContent">
+    		<h1> EpiTrack </h1>
+    		<!-- Tab -->
+    		<h2 class="active"> Account successfully created! </h2>
+    		<!-- Login Form -->
+    		<form>
+      			<a href = "/"><input type = "button" class="fadeIn second" value="Go back to Sign in" /></a>
+   	 		</form>
+  		</div>
+	</div>
+</body>

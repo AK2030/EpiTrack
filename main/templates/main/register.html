@@ -1,0 +1,79 @@
+{% load static %}
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href = "{% static '/main/css/main.css' %}">
+	<style type="text/css">
+
+		/* BUTTONS */
+
+		input[type=text], input[type=email], input[type=password] {
+		  background-color: #f6f6f6;
+		  border: none;
+		  color: #0d0d0d;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		  margin: 5px;
+		  width: 85%;
+		  border: 2px solid #f6f6f6;
+		  border-radius: 5px 5px 5px 5px;
+		}
+
+		input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+		  background-color: #fff;
+		  border-bottom: 2px solid #5fbae9;
+		}
+
+		input[type=text]:placeholder, input[type=email]:placeholder, input[type=password]:placeholder {
+		  color: #cccccc;
+		}
+
+	</style>
+</head>
+<body style = "background-image: url(https://cdn.discordapp.com/attachments/756681377386070020/756932989258301552/unknown.png); background-position: center;background-size: 10%;background-repeat: repeat;">
+	<div class="wrapper fadeInDown">
+    <div id="formContent">
+   		<h1 style = "padding-top: 1em; margin-bottom: 0.5em;"> EpiTrack </h1>
+    	<!-- Tabs -->
+    	<a href = "/"><h2 class="inactive underlineHover"> Sign In </h2></a>
+    	<h2 class="active"> Sign Up </h2>
+    	<!-- Login Form -->
+    	<form action = "" method="POST">
+    		{% csrf_token %}
+    		{{form.username}}
+    		{{form.first_name}}
+    		{{form.last_name}}
+    		{{form.email}}
+    		{{form.password1}}
+    		{{form.password2}}
+    		<p style = "font-size: 15px; padding:1em;">Password must contain at least 8 characters, one capital letter, one symbol, and one numeric value. Passwords may not be entirely numeric.</p>
+      		{{form.errors}}
+      		{% for message in messages %}
+				<p id="messages" style = "font-size: 15px;">{{message}}</p>
+			{% endfor %}	
+      		<input type="submit" value="Create Account">
+   		</form>
+	</div>
+</div>
+<script type="text/javascript">
+
+	var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username';
+		form_fields[2].placeholder='First Name';
+		form_fields[3].placeholder='Last Name';
+		form_fields[4].placeholder='Email';
+		form_fields[5].placeholder='Password';
+		form_fields[6].placeholder='Password Confirmation';
+
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+
+</script>
+</body>

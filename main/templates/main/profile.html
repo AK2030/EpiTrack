@@ -1,0 +1,104 @@
+<head>
+    <title>EpiTrack</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+
+        /* BASIC */
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Poppins", sans-serif;
+            background-color: #56baed;
+        }
+
+        a, a:visited, a:focus, a:active, a:link {
+            text-decoration: none;
+            outline: 0;
+        }
+
+        a {
+            color: currentColor;
+            transition: .2s ease-in-out;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        /* BUTTON */
+
+        .edit {
+            background-color: #56baed;
+            border: none;
+            color: white;
+            padding: 15px 80px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+            border-radius: 5px 5px 5px 5px;
+            margin: 5px 20px 20px 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column; 
+            justify-content: center;
+            width: 100%;
+            padding-top: 2em;
+            min-height: 100%;
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 90%;
+            max-width: 450px;
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+{% extends "main/header.html" %}
+
+{% block content %}
+    <div class = "wrapper">
+        <div id = "formcontent">
+        <h1>My Account</h1>
+        <h3>Username</h3>
+        {{request.user.username}}
+        <h3>Email</h3>
+        {{request.user.email}}
+        <h3>First Name</h3>
+        {{request.user.first_name}}
+        <h3>Last Name</h3>
+        {{request.user.last_name}}
+        <br/>
+        <a class = "edit" href = "/edit_profile">Edit</a>
+        </div>
+    </div>
+    <footer>
+        {% include "main/footer.html" %}
+    </footer>
+{% endblock %}
+</body>

@@ -1,0 +1,34 @@
+{% load static %}
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href = "{% static '/main/css/main.css' %}">
+</head>
+<body style = "background-image: url(https://cdn.discordapp.com/attachments/756681377386070020/756932989258301552/unknown.png); background-position: center; background-size: 10%">
+	<div class="wrapper fadeInDown">
+    	<div id="formContent">
+    		<h1 style = "padding-top: 1em; margin-bottom: 0.5em;"> EpiTrack </h1>
+    		<!-- Tabs -->
+    		<h2 class="active"> Sign In </h2>
+    		<a href = "/register"><h2 class="inactive underlineHover"> Sign Up </h2></a>
+    		<!-- Login Form -->
+    		<form method = "POST" action = "">
+    			{% csrf_token %}
+     			<input type="username" id="login" class="fadeIn second" name="username" placeholder="Username" required="true">
+      			<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required="true">
+      			<input type="submit" class="fadeIn fourth" value="Login">
+   	 		</form>
+            <!-- Messages -->
+   	 		{% for message in messages %}
+				<p id="messages">{{message}}</p>
+			{% endfor %}		
+   			<!-- Forgot Passowrd & Sign in as guest -->
+    		<div id="formFooter">
+    			<a class="underlineHover" href="/guest_home" style = "margin-bottom: 0.5em;"> Just want a quick check? Sign in as guest. </a>
+      			<a class="underlineHover" href="/reset_password"> Forgot Password? </a>
+    		</div>
+  		</div>
+	</div>
+</body>

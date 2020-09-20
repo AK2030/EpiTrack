@@ -1,0 +1,150 @@
+{% load static %}
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		
+		@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+		/* BASIC */
+
+		* {
+			box-sizing: border-box;
+			outline: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body {
+			height: 100%;
+			font-family: "Poppins", sans-serif;
+			background-color: #56baed;
+		}
+
+		a, a:visited, a:focus, a:active, a:link {
+			text-decoration: none;
+			outline: 0;
+		}
+
+		a {
+			color: currentColor;
+			transition: .2s ease-in-out;
+		}
+
+		ul {
+			padding: 0;
+			list-style: none;
+		}
+
+		/* CONTENT */
+
+		main {
+			padding: 70px 20px 0;
+			display: flex;
+			flex-direction: column;
+			min-height: 100%;
+		}
+
+		 .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column; 
+    		padding-top: 2em;
+            width: 100%;
+            min-height: 100%;
+            margin-bottom: 2em;
+
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 90%;
+            /**max-width: 600px;**/
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+        }
+			
+		#formContent h1 {
+			margin-bottom: 0.25em;
+			margin-top: 0.25em;
+		}
+		#formContent p {
+			margin-bottom: 0.25em;
+		}
+
+		/* BUTTON */
+
+		input[type=submit] {
+			background-color: #56baed;
+			border: none;
+			color: white;
+			padding: 15px 80px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 13px;
+			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+			border-radius: 5px 5px 5px 5px;
+			margin: 5px 20px 40px 20px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		input[type=submit]:hover {
+			background-color: #39ace7;
+		}
+
+		input[type=submit]:active {
+			transform: scale(0.95);
+		}
+
+		#messages{
+			background-color: red;
+			color: #fff;
+			padding: 1em;
+			margin-top: 0;
+			margin-bottom:0;
+		}
+
+		.page {
+            width: 100%;
+            letter-spacing: .03em;
+        }
+
+        header {
+            display: flex;
+            position: fixed;
+            width: 100%;
+            height: 4.5em;
+            background: #212121;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+
+	</style>
+</head>
+<body>
+<div class="page">
+	<header tabindex="0"> EpiTrack </header>
+</div>
+<main>
+	<p id= "messages" style = "text-align: center; margin-top: 2em;">Please be aware that by using guest you will have limited functionalities. Instead of being able to access our array of diseases, you will only be able to access crucial information on the Coronavirus outbreak below. If you would like to access more of the Outbreak Tracker's features, please <a href = "/" style = "color: black;">log in</a>.</p>
+	<div class = "wrapper">
+		<div id = "formContent">
+		<span><h1>Covid-19</h1></span>
+			<div>
+				<p>The Outbreak Tracker is focused on bringing you information quickly and effectively on the progressing Covid-19 pandemic. Information from symptoms, treatments, death count, etc. will all be provided at the touch of a finger.</p><br/>
+				
+				{% include 'main/map.html' %}
+			</div>
+		</div>
+	</div>
+</main>
+<footer>
+    {% include "main/footer.html" %}
+</footer>
+</body>

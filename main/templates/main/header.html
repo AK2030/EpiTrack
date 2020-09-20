@@ -1,0 +1,177 @@
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        /* HEADER */
+
+        .page {
+            width: 100%;
+            letter-spacing: .03em;
+            display: block;
+            z-index:999;
+        }
+
+        header {
+            display: flex;
+            position: fixed;
+            width: 100%;
+            height: 4.5em;
+            background: #212121;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav-container {
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        #nav-container .bg {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 70px);
+            visibility: hidden;
+            opacity: 0;
+            transition: .3s;
+            background: #000;
+        }
+
+        #nav-container:focus-within .bg {
+            visibility: visible;
+            opacity: .6;
+        }
+
+        #nav-container * {
+            visibility: visible;
+        }
+
+        .button {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            border: 0;
+            background: transparent;
+            border-radius: 0;
+            height: 70px;
+            width: 30px;
+            cursor: pointer;
+            pointer-events: auto;
+            margin-left: 25px;
+            touch-action: manipulation;
+        }
+
+        .icon-bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #aaa;
+            transition: .3s;
+        }
+
+        .icon-bar + .icon-bar {
+            margin-top: 5px;
+        }
+
+        #nav-container:focus-within .button {
+            pointer-events: none;
+        }
+
+        #nav-container:focus-within .icon-bar:nth-of-type(1) {
+            transform: translate3d(0,8px,0) rotate(45deg);
+        }
+
+        #nav-container:focus-within .icon-bar:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        #nav-container:focus-within .icon-bar:nth-of-type(3) {
+            transform: translate3d(0,-8px,0) rotate(-45deg);
+        }
+
+        #nav-content {
+            margin-top: 70px;
+            padding: 20px;
+            width: 90%;
+            max-width: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: calc(100% - 70px);
+            background: #ececec;
+            pointer-events: auto;
+            transform: translateX(-100%);
+            transition: transform .3s;
+            will-change: transform;
+            contain: paint;
+        }
+
+        #nav-content ul {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #nav-content li a, h4 {
+            padding: 10px 5px;
+            display: block;
+            text-transform: uppercase;
+            transition: color .1s;
+        }
+
+        #nav-content li a:hover {
+            color: #56baed;
+        }
+
+        #nav-content li:not(.small) + .small {
+            margin-top: auto;
+        }
+
+        #nav-container:focus-within #nav-content {
+            transform: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page ">
+	<header tabindex="0"> EpiTrack </header>
+  	<div id="nav-container">
+    	<div class="bg"></div>
+    	<div class="button" tabindex="0">
+      		<span class="icon-bar"></span>
+      		<span class="icon-bar"></span>
+      		<span class="icon-bar"></span>
+    	</div>
+    	<div id="nav-content" tabindex="0">
+      		<ul>
+                <li>
+                    <h4><i class="fa fa-hand-paper-o fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Hello, {{request.user.first_name}}.</h4>
+                </li>
+      			<li><a href="/home"><i class="fa fa-home fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Home</a></li>
+        		<li><a href="/covid19"><i class="fa fa-globe fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Covid-19</a></li>
+        		<li><a href="/foodborne"><i class="fa fa-cutlery fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Foodborne Illness</a></li>
+        		<li><a href="/airborne"><i class="fa fa-plane fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Airborne Illness</a></li>
+                <li><a href="/hospital"><i class="fa fa-ambulance fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Find a testing center / hospital near you</a></li>
+                <!--<li><a href="/my_dashboard"><i class="fa fa-cogs fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>My Dashboard</a></li>-->
+                <li><a href="/profile"><i class="fa fa-user fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>My Profile</a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out fa-1x" aria-hidden="true" style = "margin-right:0.5em;"></i>Log Out</a></li>
+      		</ul>
+    	</div>
+  	</div> 
+</div>
+{% block content %}
+{% endblock %}
+</body>

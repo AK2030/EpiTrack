@@ -1,0 +1,508 @@
+<head>
+    <title>EpiTrack</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        /* BASIC */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Poppins", sans-serif;
+            background-color: #56baed;
+        }
+
+        a, a:visited, a:focus, a:active, a:link {
+            text-decoration: none;
+            outline: 0;
+        }
+
+        a {
+            color: currentColor;
+            transition: .2s ease-in-out;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        /* CONTENT */
+
+        .test {
+            background-color: white;
+            border-radius: 10px 10px 10px 10px;
+            text-align: center;
+            margin-top: 2.5em;
+            padding: 1em 2em 0.1em 2em;
+            margin-bottom: 1.5em;
+        }
+
+        .test h1 {
+            margin-bottom: 0.5em;
+            margin-top: 0.75em;
+        }
+
+        main {
+            padding: 70px 20px 0;
+            display: flex;
+            flex-direction: row;
+            min-height: 100%;
+        }
+
+        /* FADING ANIMATIONS */
+
+        .fadeInDown {
+          animation-name: fadeInDown;
+          animation-duration: 1s;
+          animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+          }
+          100% {
+            opacity: 1;
+            transform: none;
+          }
+        }
+
+        @keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+          }
+          100% {
+            opacity: 1;
+            transform: none;
+          }
+        }
+
+
+        @import 'https://fonts.googleapis.com/css?family=Prompt:400,700';
+
+.modal {
+  /* This way it could be display flex or grid or whatever also. */
+  display: block;
+  
+  /* Probably need media queries here */
+  width: 900px;
+  max-width: 100%;
+  
+  height: 400px;
+  max-height: 100%;
+  
+  position: fixed;
+  
+  z-index: 100;
+  
+  left: 50%;
+  top: 50%;
+  
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+  
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+  
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.closed {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px 50px 20px 20px;
+}
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-guts ul {
+  margin: 10px 0 10px 30px;
+}
+.modal-guts li, p {
+  margin: 0 0 10px 0;
+}
+.modal-guts h1 {
+  margin: 0 0 20px 0;
+}
+
+.modal .close-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  top: 10px;
+  
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+  border-radius: 5px;
+  border: 0;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+}
+
+.open-button {
+  border: 0;
+  margin-top: 1em;
+  background: #56baed;
+  color: white;
+  padding: 15px 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+@media only screen and (max-width: 1000px) {
+            main {
+                flex-direction:column;
+            }
+        }
+ .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: row; 
+            justify-content: center;
+            width: 100%;
+            padding-top: 2em;
+            min-height: 100%;
+            margin-bottom: 1em;
+
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+
+</style>
+</head>
+<body>
+    {% extends "main/header.html" %}
+
+    {% block content %}
+    <main>
+        <div class = "wrapper">
+            <div id = "formcontent">
+            <span><h1><strong>Listeria</strong></h1></span>
+            <img src="https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2019/girl-blowing-nose-illustration.jpg?h=370&w=660&la=en&hash=4472CD153E13A3E2BCE03B7170216171" style="width:50%; margin: 1em;">
+            <div>
+                Listeria, also known as listeriosis, is a common bacterial disease infecting more than 1,600 people in the US every year, usually through contaminated food. The bacteria listeria monocytogenes is responsible for the infection. It primarily attacks the intestinal tract. Pregnant women are especially at risk.<br/>
+                <button id="open-button" class="open-button">More information</button>
+            </div>
+        </div>
+    </div>
+    <!-- Airborne Illness -->
+        <div class = "wrapper">
+            <div id = "formcontent">
+            <span><h1><strong>Salmonella</strong></h1></span>
+            <img src="https://foodsafetynewsfullservice.marlersites.com/files/2016/03/CDC-Holy-Cow-raw-milk-outbreak-graphic-1.jpg"style= "width:50%; margin: 1em;">
+            <div>
+                Salmonella, also known as salmonellosis, is a common bacterial disease that infects more than 200,000 people in the US every year, primarily through contaminated food. Many different strains of salmonella exist, but they primarily attack the intestinal tract. Severe infections may require medical care including IV fluids and sometimes antibiotics.<br/>
+                <button id="open-button2" class="open-button">More information</button>
+            </div>
+        </div>
+    </div>
+<div class = "wrapper">
+            <div id = "formcontent">
+            <span><h1><strong>E. Coli</strong></h1></span>
+            <img src="https://i.guim.co.uk/img/media/78cebd7b77e4ffac0e08497bbee88374645f3c53/0_1772_3623_2173/master/3623.jpg?width=700&quality=85&auto=format&fit=max&s=c19e10ea1bc3cb735742619797f28c34" style="width:50%; margin: 1em;">
+            <div>
+               E. coli is a common bacterial disease infecting more than 73,000 people in the US every year, primarily through contaminated water or food such as raw vegetables or undercooked ground beef. The bacteria escherichia coli O157:H7 is responsible for the infection, and though rarely dangerous to adults, it can cause hemolytic uremic syndrome, a life-threatening form of kidney failure for children and the elderly.
+<br/>
+                <button id="open-button3" class="open-button">More information</button>
+            </div>
+        </div>
+    </div>
+    
+        <div class="modal-overlay" id="modal-overlay"></div>
+
+<div class="modal" id="modal">
+  <button class="close-button" id="close-button">Close</button>
+  <div class="modal-guts">
+    <h1>Listeria</h1>
+    <h4>Symptoms</h4>
+    <ul>
+         <li>Fever</li>
+         <li>Chills</li>
+         <li>Muscle aches</li>
+         <li>Nausea</li>
+         <li>Diarrhea</li>
+         <li>Headache</li>
+         <li>Stiff neck</li>
+         <li>Confusion</li>
+         <li>Loss of balance</li>
+         <li>Convulsions</li>
+    </ul>
+    <h4>Onset</h4>
+    <ul>
+        <li>Anywhere from a few days to 30 days after eating contaminated food</li>
+    </ul>
+     <h4>Causes</h4>
+     <ul>
+         <li>Listeria bacteria can be found in soil, water, and animal feces</li>
+         <li>Eating the following foods can cause infection:</li>
+         <ul>
+             <li>Raw vegetables contaminated from the soil or manure</li>
+             <li>Contaminated meat</li>
+             <li>Unpasteurized milk or foods made from unpasteurized milk</li>
+             <li>Certain processed foods like soft cheeses, hot dogs, and deli meats that were contaminated after processing</li>
+         </ul>
+     </ul>
+     <h4>Populations most at risk</h4>
+     <ul>
+         <li>Pregnant women (unborn children can also contract the infection from their mother)</li>
+        <li>Those with weakened immune systems</li>
+     </ul>
+     <h4>Prevention</h4>
+     <ul>
+        <li>Follow the standard food safety guidelines:</li>
+         <ul>
+            <li>Wash your hands thoroughly with warm, soapy water before and after handling and preparing food</li>
+            <li>Use hot, soapy water to wash utensils, cutting boards, and other food preparation surfaces</li>
+            <li>Scrub raw vegetables and clean them with a scrub brush or vegetable brush under plenty of running water</li>
+            <li>
+                Cook food thoroughly, using a food thermometer to ensure that meat, poultry, and egg dishes are cooked to a safe temperature
+            </li>
+        </ul>
+        <li>If you are pregnant or have a weakened immune system, be cautious about eating:</li>
+        <ul>
+            <li>Soft cheeses like feta, brie, Camembert, or blue cheese (unless these are clearly labelled as made with pasteurized milk)</li>
+            <li>Mexican-style cheeses like queso blanco and queso fresco (unless these are clearly labelled as made with pasteurized milk)</li>
+            <li>Hot dogs and deli meats unless they are reheated until steaming hot</li>
+            <ul>
+                <li>Wash hands after handling and keep fluid from the packages away from other foods, utensils, and food preparation surfaces</li>
+            </ul>
+            <li>Meat spreads that are refrigerated (canned or shelf-stable are safe, so long as you refrigerate them after opening)</li>
+            <li>Smoked seafood that is not cooked into other dishes, including products labeled as nova style, lox, kippered, or jerky</li>
+            <li>Raw or lightly cooked sprouts</li>
+        </ul>
+
+     </ul>
+  </div>
+</div>
+
+<div class="modal" id="modal2">
+  <button class="close-button" id="close-button2">Close</button>
+  <div class="modal-guts">
+        <h1>Salmonella</h1>
+        <h4>Symptoms</h4>
+        <ul>
+            <li>Nausea and vomiting</li>
+            <li>Abdominal cramps</li>
+            <li>Diarrhea</li>
+            <li>Fever</li>
+            <li>Chills</li>
+            <li>Headache</li>
+            <li>Blood in the stool</li>
+        </ul>
+        <h4>Onset</h4>
+        <ul>
+            <li>6 hours to 6 days after infection</li>
+            <li>Infection lasts for 4-7 days</li>
+        </ul>
+        <h4>Causes</h4>
+        <ul>
+            <li>Eating foods that have been contaminated with feces; common foods include:</li>
+                <ul>
+                    <li>Raw meat, poultry and seafood</li>
+                    <li>Raw eggs</li>
+                    <li>Fruits and vegetables</li>
+                </ul>
+        </ul>
+        <h4>Populations at risk</h4>
+        <ul>
+            <li>Those who travel to developing countries with poor sanitation</li>
+            <li>Those who own a pet bird or reptile</li>
+            <li>Those who use antacids</li>
+            <li>Those who have recently used antibiotics</li>
+            <li>Those with inflammatory bowel disease</li>
+            <li>Those who have weakened immune systems</li>
+        </ul>
+        <h4>Prevention</h4>
+        <ul>
+            <li>Wash your hands thoroughly with warm water and soap, especially after:</li>
+                <ul>
+                <li>Using the bathroom</li>
+                <li>Handling raw meat or poultry</li>
+                <li>Touching reptiles or birds</li>
+            </ul>
+            <li>Avoid cross-contamination:</li>
+            <ul>
+                <li>Use hot, soapy water to wash utensils, cutting boards, and other food preparation surfaces</li>
+                <li>Keep raw foods separate from cooked foods, especially the surfaces they were prepared on</li>
+                <ul>
+                    <li>Do not put cooked food on the same plate that you put raw food</li>
+                    <li>Have two separate cutting boards for raw meat and fruits and vegetables</li>
+                </ul>
+                <li>Store raw meat, poultry, and seafood away from the other foods in your refrigerator</li>
+            </ul>
+            <li>Avoid eating raw eggs, especially in dough</li>
+            <ul>
+                <li>If you must eat raw eggs, make sure they’ve been pasteurized</li>
+            </ul>
+            <li>Cook foods thoroughly, and use a food thermometer to check that food is well cooked at its thickest part</li>
+            <ul>
+                <li>Salmonella dies at approximately 140 ℉</li>
+            </ul>
+
+
+    </div>
+</div>
+<div class="modal" id="modal3">
+  <button class="close-button" id="close-button3">Close</button>
+  <div class="modal-guts">
+        <h1>E. Coli</h1>
+        <h4>Symptoms</h4>
+        <ul>
+            <li>Diarrhea</li>
+            <li>Nausea or vomiting</li>
+        </ul>
+        <h4>Onset</h4>
+        <ul>
+            <li>3-4 days after eating contaminated food, though the range is between 1 day to 1 week after exposure</li>
+        </ul>
+        <h4>Causes</h4>
+        <ul>
+            <li>Contaminated food such as:</li>
+                <ul>
+                    <li>Ground beef</li>
+                    <li>Unpasteurized milk</li>
+                    <li>Fresh produce, especially spinach and lettuces</li>
+                </ul>
+            <li>Contaminated water:</li>
+                <ul>
+                    <li>Private wells and rural water supplies </li>
+                    <li>Surface water like streams and rivers contaminated with animal feces</li>
+                    <li>Infected swimming pools or lakes contaminated with feces</li>
+                </ul>
+            <li>Personal contact</li>
+            <ul>
+                <li>If infected children or adults don’t wash their hands properly, they can spread infection</li>
+            </ul>
+        </ul>
+        <h4>Populations at risk</h4>
+        <ul>
+            <li>Young children and older adults</li>
+            <li>Those with weakened immune systems</li>
+            <li>Those who eat undercooked hamburgers; unpasteurized milk, apple juice or cider; and soft cheeses made from raw milk</li>
+            <li>Those who take antacids like Nexium, Protonix, Prevacid, or Prilosec</li>
+        </ul>
+        <h4>Prevention</h4>
+        <ul>
+            <li>Be cautious with risky foods:</li>
+                <ul>
+                <li>Cook hamburgers to 160 ℉, and use a meat thermometer at the thickest point to ensure that this is true</li>
+                <li>Drink pasteurized milk, juice, and cider (boxed or bottled juice kept at room temperature is usually pasteurized even if not stated by the label)</li>
+                <li>Wash raw produce thoroughly, especially leafy greens</li>
+                <ul>
+                    <li>Note that it won’t necessarily get rid of all the E. coli because there are many spots for E. coli to attach to</li>
+                </ul>
+            </ul>
+            <li>Avoid cross-contamination:</li>
+            <ul>
+                <li>Wash your hands thoroughly with warm, soapy water before and after handling and preparing food, coming in contact with animals, and after using the bathroom</li>
+                <li>Use hot, soapy water to wash utensils, cutting boards, and other food preparation surfaces</li>
+                <li>Keep raw foods separate from cooked foods, especially the surfaces they were prepared on</li>
+                <ul>
+                    <li>Do not put cooked food on the same plate that you put raw food</li>
+                </ul>
+            </ul>
+    </div>
+</div>
+
+    </main>
+    <footer>
+        {% include "main/footer.html" %}
+    </footer>
+    <script type="text/javascript">
+        var modal = document.querySelector("#modal");
+var modalOverlay = document.querySelector("#modal-overlay");
+var closeButton = document.querySelector("#close-button");
+var openButton = document.querySelector("#open-button");
+
+closeButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+openButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+var modal2 = document.querySelector("#modal2");
+var modalOverlay2 = document.querySelector("#modal-overlay2");
+var closeButton2 = document.querySelector("#close-button2");
+var openButton2 = document.querySelector("#open-button2");
+
+closeButton2.addEventListener("click", function() {
+  modal2.classList.toggle("closed");
+  modalOverlay2.classList.toggle("closed");
+});
+
+openButton2.addEventListener("click", function() {
+  modal2.classList.toggle("closed");
+  modalOverlay2.classList.toggle("closed");
+});
+
+var modal3 = document.querySelector("#modal3");
+var modalOverlay3 = document.querySelector("#modal-overlay3");
+var closeButton3 = document.querySelector("#close-button3");
+var openButton3 = document.querySelector("#open-button3");
+
+closeButton3.addEventListener("click", function() {
+  modal3.classList.toggle("closed");
+  modalOverlay3.classList.toggle("closed");
+});
+
+openButton3.addEventListener("click", function() {
+  modal3.classList.toggle("closed");
+  modalOverlay3.classList.toggle("closed");
+});
+    </script>
+</body>
+{% endblock %}

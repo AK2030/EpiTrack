@@ -1,0 +1,446 @@
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+
+		@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        /* BASIC */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Poppins", sans-serif;
+            background-color: #56baed;
+        }
+
+        a, a:visited, a:focus, a:active, a:link {
+            text-decoration: none;
+            outline: 0;
+        }
+
+        a {
+            color: currentColor;
+            transition: .2s ease-in-out;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        /* CONTENT */
+
+        .test {
+      		background-color: white;
+      		border-radius: 10px 10px 10px 10px;
+      		text-align: center;
+      		margin-top: 2.5em;
+      		padding: 1em 2em 0.1em 2em;
+      		margin-bottom: 1.5em;
+    	}
+
+        .test h1 {
+        	margin-bottom: 0.5em;
+        	margin-top: 0.75em;
+        }
+
+    	main {
+            padding: 70px 20px 0;
+            display: flex;
+            flex-direction: row;
+            min-height: 100%;
+        }
+
+		/* FADING ANIMATIONS */
+
+		.fadeInDown {
+		  animation-name: fadeInDown;
+		  animation-duration: 1s;
+		  animation-fill-mode: both;
+		}
+
+		@-webkit-keyframes fadeInDown {
+		  0% {
+		    opacity: 0;
+		    transform: translate3d(0, -100%, 0);
+		  }
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		  }
+		}
+
+		@keyframes fadeInDown {
+		  0% {
+		    opacity: 0;
+		    transform: translate3d(0, -100%, 0);
+		  }
+		  100% {
+		    opacity: 1;
+		    transform: none;
+		  }
+		}
+
+        /* MODAL */
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%; /* Could be more or less, depending on screen size */
+        }
+
+        .close, .close2 {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "Poppins";
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @import 'https://fonts.googleapis.com/css?family=Prompt:400,700';
+
+.modal {
+  /* This way it could be display flex or grid or whatever also. */
+  display: block;
+  
+  /* Probably need media queries here */
+  width: 900px;
+  max-width: 100%;
+  
+  height: 400px;
+  max-height: 100%;
+  
+  position: fixed;
+  
+  z-index: 100;
+  
+  left: 50%;
+  top: 50%;
+  
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+  
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+  
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.closed {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px 50px 20px 20px;
+}
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-guts ul {
+  margin: 10px 0 10px 30px;
+}
+.modal-guts li, p {
+  margin: 0 0 10px 0;
+}
+.modal-guts h1 {
+  margin: 0 0 20px 0;
+}
+
+.modal .close-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  top: 10px;
+  
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+  border-radius: 5px;
+  border: 0;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+}
+
+.open-button {
+  border: 0;
+  margin-top: 1em;
+  background: #56baed;
+  color: white;
+  padding: 15px 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+@media only screen and (max-width: 1000px) {
+            main {
+                flex-direction:column;
+            }
+        }
+ .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: row; 
+            justify-content: center;
+            width: 100%;
+            padding-top: 2em;
+            min-height: 100%;
+            margin-bottom: 1em;
+
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+
+</style>
+</head>
+<body>
+    {% extends "main/header.html" %}
+
+    {% block content %}
+    <main>
+        <div class = "wrapper">
+            <div id = "formcontent">
+            <span><h1><strong>Flu</strong></h1></span>
+            <img src="https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2019/girl-blowing-nose-illustration.jpg?h=370&w=660&la=en&hash=4472CD153E13A3E2BCE03B7170216171" style="width:50%; margin: 1em;">
+            <div>
+                The flu is one of the most common viral infections that infects more than 9 million people in the US every year. It primarily attacks the lungs, nose, and throat. Young children, older adults, pregnant women, and people with chronic disease or weak immune systems are at high risk.<br/>
+                <button id="open-button" class="open-button">More information</button>
+            </div>
+        </div>
+    </div>
+    <!-- Airborne Illness -->
+        <div class = "wrapper">
+            <div id = "formcontent">
+            <span><h1><strong>Common Cold</strong></h1></span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrNfoFqjmvfwKkpyXdtSSyO2c7oWKakuftRQ&usqp=CAU"style= "width:50%; margin: 1em;">
+            <div>
+                The common cold is the most common viral infection that infects more than 10 million people in the US every year. It can be caused by many different types of viruses, primarily the rhinovirus. The condition is usually harmless and symptoms usually resolve within two weeks.<br/>
+                <button id="open-button2" class="open-button">More information</button>
+            </div>
+        </article>
+    </div>
+</div>
+
+    
+        <div class="modal-overlay" id="modal-overlay"></div>
+
+<div class="modal" id="modal">
+  <button class="close-button" id="close-button">Close</button>
+  <div class="modal-guts">
+    <h1>Flu</h1>
+    <h4>Symptoms</h4>
+    <ul>
+         <li>Fever</li>
+         <li>Aching muscles</li>
+         <li>Chills and sweats</li>
+         <li>Headache</li>
+         <li>Dry, persistent cough</li>
+         <li>Shortness of breath</li>
+         <li>Tiredness and weakness</li>
+         <li>Runny or stuffy nose</li>
+         <li>Sore throat</li>
+         <li>Eye pain</li>
+         <li>Vomiting and diarrhea (mainly in children)</li>
+    </ul>
+    <h4>Onset</h4>
+    <ul>
+        <li>Usually around 2 days, but can range from one to four days</li>
+        <li>People are contagious from a day before symptoms appear to five days after the symptoms appear</li>
+    </ul>
+     <h4>Causes</h4>
+     <ul>
+         <li>Influenza viruses travel through the air in droplets when someone who is infected coughts, sneezes, or talks</li>
+        <li>The virus enters through your eyes, nose, or mouth</li>
+     </ul>
+     <h4>Populations most at risk</h4>
+     <ul>
+         <li>Children who are 6 months to 5 years old</li>
+<li>Adults who are 65 years or older</li>
+<li>People who live or work in facilities with many other residents (i.e. nursing homes or military barracks)</li>
+<li>Those with weakened immune systems</li>
+<li>Those with chronic illnesses, especially those of the lungs (i.e. asthma, diabetes, heart disease)</li>
+<li>Native Americans</li>
+<li>Pregnant women</li>
+<li>Those who are obese</li>
+
+     </ul>
+     <h4>Prevention</h4>
+     <ul>
+        <li>Get the annual flu vaccination</li>
+         <ul>
+            <li>New strains of influenza appear regularly each year as the virus mutates</li>
+            <li>The 2020 flu vaccine can protect against three or four different strains of influenza</li>
+            <li>Though it may not give you complete immunity, it can help you avoid the worst symptoms and keep you out of the hospital</li>
+        </ul>
+        <li>Wash your hands</li>
+        <ul>
+            <li>Wash for a minimum of 20 seconds using soap and water</li>
+            <li>Alcohol-based sanitizers should be used if soap and water are not available</li>
+        </ul>
+        <li>Avoid touching your eyes, nose, or mouth</li>
+        <li>Clean regularly-touched surfaces, as the virus may be present there</li>
+        <li>Avoid crowds</li>
+
+     </ul>
+  </div>
+</div>
+
+<div class="modal" id="modal2">
+  <button class="close-button" id="close-button2">Close</button>
+  <div class="modal-guts">
+        <h1>Common Cold</h1>
+        <h4>Symptoms</h4>
+        <ul>
+            <li>Runny or stuffy nose</li>
+            <li>Sore throat</li>
+            <li>Cough</li>
+            <li>Congestion</li>
+            <li>Slight body aches or a mild headache</li>
+            <li>Sneezing</li>
+            <li>Low-grade fever</li>
+        </ul>
+        <h4>Onset</h4>
+        <ul>
+            <li>One to three days after exposure to the viruses</li>
+        </ul>
+        <h4>Causes</h4>
+        <ul>
+            <li>Cold viruses (rhinoviruses) that enter your body through your eyes, nose, or mouth
+            These spread through droplets in the air when a sick person coughs, sneezes, or talks
+            They also spread by hand-to-hand contact or by sharing contaminated objects like utensils, towels, toys, or telephones</li>
+                <ul>
+                    <li>If you touch your eyes, nose, or mouth after touching these items, you may get a cold</li>
+                </ul>
+        </ul>
+        <h4>Populations at risk</h4>
+        <ul>
+            <li>Children under the age of 6, especially if they attend childcare</li>
+            <li>Those with weakened immune systems</li>
+            <li>Those who smoke or are regularly exposed to secondhand smoke</li>
+        </ul>
+        <h4>Prevention</h4>
+        <ul>
+            <li>Wash your hands using soap and water</li>
+                <ul>
+                <li>Children will need to be reminded of this regularly</li>
+                <li>Use an alcohol-based sanitizer only if soap and water are not available</li>
+            </ul>
+            <li>Disinfect your things</li>
+            <ul>
+                <li>Clean kitchen and bathroom countertops with disinfectant</li>
+                <li>Wash children’s toy periodically</li>
+            </ul>
+            <li>Use tissues</li>
+            <ul>
+                <li>Sneeze and cough into tissues</li>
+                <li>Discard used tissues immediately and wash your hands carefully</li>
+            </ul>
+            <li>Don’t share drinking glasses or utensils with others</li>
+            <li>Avoid close contact with people who have a cold</li>
+            <li>Eat well, exercise, and sleep well</li>
+                <li>In general, this keeps you less susceptible to colds</li>
+            </ul>
+
+    </div>
+</div>
+
+    </main>
+    <footer>
+        {% include "main/footer.html" %}
+    </footer>
+    <script type="text/javascript">
+        var modal = document.querySelector("#modal");
+var modalOverlay = document.querySelector("#modal-overlay");
+var closeButton = document.querySelector("#close-button");
+var openButton = document.querySelector("#open-button");
+
+closeButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+openButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+var modal2 = document.querySelector("#modal2");
+var modalOverlay2 = document.querySelector("#modal-overlay2");
+var closeButton2 = document.querySelector("#close-button2");
+var openButton2 = document.querySelector("#open-button2");
+
+closeButton2.addEventListener("click", function() {
+  modal2.classList.toggle("closed");
+  modalOverlay2.classList.toggle("closed");
+});
+
+openButton2.addEventListener("click", function() {
+  modal2.classList.toggle("closed");
+  modalOverlay2.classList.toggle("closed");
+});
+    </script>
+</body>
+{% endblock %}

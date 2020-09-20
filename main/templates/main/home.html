@@ -1,0 +1,176 @@
+<head>
+	<title>EpiTrack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+
+		/* BASIC */
+
+		* {
+		    box-sizing: border-box;
+		    outline: none;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		html, body {
+		    height: 100%;
+		    font-family: "Poppins", sans-serif;
+		    background-color: #56baed;
+		}
+
+		a, a:visited, a:focus, a:active, a:link {
+		    text-decoration: none;
+		    outline: 0;
+		}
+
+		a {
+		    color: currentColor;
+		    transition: .2s ease-in-out;
+		}
+
+		ul {
+		    padding: 0;
+		    list-style: none;
+		}
+
+		/* CONTENT */
+
+		main {
+		    padding: 90px 20px 0;
+		    display: flex;
+		    flex-direction: row;
+		    min-height: 100%;
+		    margin-bottom: 3em;
+		    
+		}
+
+		.content {
+			background-color: white;
+			border-radius: 10px 10px 10px 10px;
+			text-align: center;
+			margin-top: 2.5em;
+			padding: 1em 2em 0.1em 2em;
+			margin-bottom: 1em;
+		}
+
+		@media only screen and (max-width: 1000px) {
+			main {
+				flex-direction:column;
+			}
+		}
+
+			
+		.content h1 {
+			margin-top: 0.75em;
+		}
+
+		/* BUTTON */
+
+		input[type=submit] {
+			background-color: #56baed;
+			border: none;
+			color: white;
+			padding: 15px 80px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 13px;
+			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+			border-radius: 5px 5px 5px 5px;
+			margin: 5px 20px 40px 20px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		input[type=submit]:hover {
+			background-color: #39ace7;
+		}
+
+		input[type=submit]:active {
+			transform: scale(0.95);
+		}
+
+		 .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column; 
+            justify-content: center;
+            width: 100%;
+            padding-top: 2em;
+            min-height: 100%;
+
+        }
+
+        #formContent {
+            border-radius: 10px 10px 10px 10px;
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            padding: 2em;
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+
+	</style>
+</head>
+<body>
+{% extends "main/header.html" %}
+
+{% block content %}
+	<main>
+		<!-- User's Dashboard -->
+		<!--<article class = "content">
+			<span><h1><strong>Disease dashboard</strong></h1></span>
+			<img src="data:image/png;base64,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" style="width:50%; margin: 1em;">
+			<div>
+				Here at the Outbreak Tracker we make it easy to keep track diseases of specific interest to <strong>you</strong>. All your information is saved in the dashboard so you can quickly access them. For further reference, if you would like to save a specific disease please click add to dashboard.<br/>
+				<a href = "/my_dashboard"><input type="submit" value="Dashboard"></a>
+			</div>
+		</article>-->	
+
+		<!-- Covid-19 -->
+		<div class = "wrapper">
+        <div id = "formcontent">
+			<span><h1><strong>Covid-19</strong></h1></span>
+			<img src="https://api.time.com/wp-content/uploads/2020/04/CoronavirusFAQOpener.jpg?quality=85&w=1200&h=628&crop=1" style="width:50%; margin: 1em;">
+			<div>
+				The Outbreak Tracker is focused on bringing you information quickly and effectively on the progressing Covid-19 pandemic. Information from symptoms, treatments, death count, etc. will all be provided at the touch of a finger.<br/>
+				<a href = "/covid19"><input type="submit" value="Learn More"></a>
+			</div>
+		</div>
+	</div>
+	<!-- Airborne Illness -->
+		<div class = "wrapper">
+			<div id = "formcontent">
+			<span><h1><strong>Airborne Illness</strong></h1></span>
+			<img src="https://image.freepik.com/free-vector/happy-cute-little-kid-boy-wear-mask-avoid-virus_97632-2048.jpg"style= "width:50%; margin: 1em;">
+			<div>
+				The Outbreak Tracker is focused on bringing you information quickly and effectively on various airborne illnesses. Information from symptoms, treatments, death count, etc. will all be provided at the touch of a finger.<br/>
+				<a href = "/airborne"><input type="submit" value="Learn More"></a>
+			</div>
+		</article>
+	</div>
+</div>
+		
+		<!-- Foodborne Illness -->
+		<div class = "wrapper">
+			<div id = "formcontent">
+			<span><h1><strong>Foodborne Illness</strong></h1></span>
+			<img src="https://giecdn.azureedge.net/storage/fileuploads/image/2020/01/13/stop_logo_rgb.png?w=736&h=414&mode=crop" style= "width:50%; margin: 1em;">
+			<div>
+				The Outbreak Tracker is focused on bringing you information quickly and effectively on various foodborne illnesses. Information from symptoms, treatments, death count, etc. will all be provided at the touch of a finger.<br/>
+				<a href = "/foodborne"><input type="submit" value="Learn More"></a>
+			</div>
+		</article>
+	</div>
+</div>
+				
+		
+	</main>
+	<footer>
+		{% include "main/footer.html" %}
+	</footer>
+</body>
+{% endblock %}

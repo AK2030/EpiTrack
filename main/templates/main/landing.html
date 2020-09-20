@@ -1,0 +1,238 @@
+{% load static %}
+<html style="scroll-behavior: smooth;">
+<head>
+	<title>Outbreak Tracker</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="{% static '/main/css/style.css' %}"> <!-- CSS reset -->
+	<style type="text/css">
+
+		/* BASIC */
+
+		html, body {
+		    height: 100%;
+		    font-family: "Poppins", sans-serif;		
+			background: white;
+		}
+
+		h1, h2, h3, h4, h5, h6{
+			font-family: "Poppins", sans-serif;		
+		}
+
+		.welcome {
+			background: linear-gradient(0deg, rgba(86,186,237,1) 0%, rgba(150,211,242,1) 35%, rgba(192,244,255,1) 100%);
+			text-align: center;
+			justify-content: center;
+			color: white;
+			display: flex;
+		  	align-items: center;
+		  	flex-direction: column;
+		  	justify-content: center;
+		  	width: 100%;
+		  	min-height: 100%;
+		}
+
+		#header {
+			background: #07090c;
+			color: rgba(255, 255, 255, 0.75);
+			cursor: default;
+			height: 3.25em;
+			left: 0;
+			line-height: 3.25em;
+			position: fixed;
+			text-align: right;
+			top: 0;
+			width: 100%;
+			z-index: 10001;
+		}
+
+		#header a {
+			transition: color 0.2s ease-in-out;
+			color: #fff;
+			display: inline-block;
+			margin-right: 1.25em;
+			text-decoration: none;
+		}
+			
+		#header.alt {
+			background-color: transparent;
+			font-size: 1.25em;
+			padding: 1em 1em;
+			position: absolute;
+		}
+
+		#about {
+			width: 100%;
+			/*background-image: url(https://lh3.googleusercontent.com/proxy/JNGZb1kMiKNilcTtLnK85iJvswEX9HmObnDqf7OoOciiwsKLyKogY5I5J3YOIvpmDJiFE-Sy_xpd35opvQ9_DTh8EDPk5FEIuD40EIqj-80A6m5_c1dFVjIzmUJmmWcrbbnbsYTRcAmW3p7Au-Qp83o);*/
+			background-image: url(https://i.pinimg.com/736x/1f/d2/10/1fd210f97fd4af92d97fdd84854727c1.jpg);
+			background-repeat:no-repeat;
+			background-size: cover;
+			color: black;
+			padding: 2em;
+			opacity: 0.9;
+		}
+
+		.icons {
+			background-color: #fafdff;
+			justify-content: center;
+			align-items: center;
+			text-align:center;
+			padding: 2em;
+		}
+
+		.topright {
+		    position: absolute;
+		    top: 8px;
+		    right: 16px;
+		    font-size: 18px;
+  		}
+
+      .mySlides img {
+      		border-radius: 50%; border-top-left-radius: 50% 50%;
+			border-top-right-radius: 50% 50%;
+			border-bottom-right-radius: 50% 50%;
+			border-bottom-left-radius: 50% 50%; 
+			height:30vw;
+			width:30vw;
+			max-width: 40em;
+			min-width: 10em;
+			min-height: 10em;
+			max-height: 40em;
+			margin-bottom: 1em;
+      	}
+
+      	#team {
+      		text-align:center;padding:2em;
+      	}
+
+      	#team h1 {
+      		margin-bottom: 0.75em;
+      	}
+
+      	.mySlides {
+	      	border: 8px dashed grey;
+	      	padding: 20px;
+	      	background-image:url(https://i.pinimg.com/originals/4b/3f/35/4b3f3584f8e83bb731e86e3628e64e16.png);
+      	}
+
+     	.mySlides .pic {
+     		width: 100%;
+     	}
+
+     	.container {
+	     	text-align: center;
+	     	justify-content: center;
+	     	padding: 5em;
+     	}
+
+     	.next {
+     		display: inline-block;
+     		width: 10vw;
+     		height: 10vw;
+     		max-width: 4em;
+     		max-height: 4em;
+     		cursor: pointer;
+     	}
+
+	</style>
+</head>
+<body>
+	<!-- Header -->
+	<header id="header" class="alt">
+		<a id = "myBtn" href = "#about"><strong> About Us </strong></a>
+		<a href="/login"><strong> Sign In / Sign Up</strong></a>
+	</header>
+	<!-- Body -->
+	<div class = "welcome">
+		<h1 style = "padding: 1em;"><strong>Welcome to the Outbreak Tracker<strong></h1>
+	</div>
+	<div class = "container">
+		<h2><strong>What we offer</strong></h2>
+		<div class= "row">
+			<div class = "col-sm">
+			<i class="fa fa-globe fa-4x" aria-hidden="true"></i>
+			<p>Bringing you information from all over the United States. Comphrensive information that ensures that wherever you live you can get the information you need.</p>
+			</div>
+		<div class = "col-sm">
+			<i class="fa fa-ambulance fa-4x" aria-hidden="true"></i>
+			<p>Bringing you information quickly at the latest updates. We pride ourselves on bringing you information fast when you need it.</p>
+		</div>
+		<div class = "col-sm">
+			<i class="fa fa-tablet fa-4x" aria-hidden="true"></i>
+			<p>We are easily accessible. All you need to do is a create an account and you're able to access all of our features.</p>
+		</div>
+		</div>
+	</div>
+	<div id = "about">
+		<h1><strong>About Us<strong></h1>
+		<p>Welcome to Outbreak Tracker, your number one source for all things disease tracking. We're dedicated to giving you the very best of information on various diseases, with a focus on credibility and accessibility.Founded in 2020 by Mishty Dhekial, Amisha Kumar, Ashmita Kumar, Outbreak Tracker has come a long way from its beginnings in Los Angeles, California.When the Outbreak Tracker Team first started out, our passion for bringing a reliable, important app drove them to work all through the summer of 2020 so that Outbreak Tracker can offer you the best disease tracker there is. We now serve customers all over the United States, and are thrilled that we're able to turn our passion into our own website. We hope you enjoy our product as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us at <a href = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=outbreaktrackerteam@gmail.com" target="_blank"">outbreaktrackerteam@gmail.com</a>.</p>
+
+		<p>Sincerely,<br/>
+
+		The Outbreak Tracker Team</p>
+	</div>
+	<div id = "team">
+		<h1><strong>Meet our team</strong></h1>
+		<!--Mishty-->
+		<div class = "mySlides">
+			<div class = "pic">
+				<a class ="next" onclick="plusDivs(-1)">&#10094;</a>
+				<img src = "{% static '/main/images/MishtyReal.jpg' %}">
+				<a class = "next" onclick="plusDivs(+1)">&#10095;</a>
+			</div>
+			<div class = "text">
+				<h4><strong>Mishty Dhekial</strong></h4>
+			    <p>Mishty Dhekial is a rising junior attending Troy High School in California. Continuously involved in school, Mishty is part of LEO and girlUp and tutors children over the summer for various charities. She has a passion for coding and is currently working her way towards a Google IT certificate. Mishty competed in the top tier of CyberPatriot for 2 years, specializing in Cisco security. With her two friends, she designed an app that helped track live outbreaks leading her and her team to win the "Best Use of AI" award at AI Hacks. When she isn't programming, Mishty enjoys reading a plethora of fiction books especially science fiction and thrillers and watching various cooking shows. </p>
+			</div>
+		</div>
+		<!--Amisha-->
+		<div class = "mySlides">
+			<div class = "pic">
+				<a class = "next" onclick="plusDivs(-1)">&#10094;</a>
+				<img src = "{% static '/main/images/Amisha.JPG' %}">
+				<a class = "next" onclick="plusDivs(+1)">&#10095;</a>
+			</div>
+			<div class = "text">
+
+			</div>
+		</div>
+		<!--Ashmita-->
+		<div class = "mySlides">
+			<div class = "pic">
+				<a class = "next" onclick="plusDivs(-1)">&#10094;</a>
+				<img src = "">
+				<a class = "next" onclick="plusDivs(+1)">&#10095;</a>
+			</div>
+			<div class = "text">
+				<h3>Ashmita Kumar</h3>
+			    <p>Ashmita Kumar is a rising junior at Troy High School. She hopes to help girls enter the field of STEM, and as a result, is the founder and president of the Troy G-TEC club, teaching girls the skills needed in the fields of cybersecurity and coding. She is also an instructor for Troy's cybersecurity camps over the summer. Ashmita has competed in CyberPatriot for 2 years with a specialty in Linux security. She won an award at the AI Hacks hackathon for the "Best Use of AI" for designing an app that gives live updates to users when outbreaks are identified. Ashmita is an accomplished Python coder, and is currently working towards her CompTIA A+ certification.</p>
+			</div>
+		</div>
+	</div>
+	<footer>
+		{% include "main/footer.html" %}
+	</footer>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+	  		showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+	  		var i;
+			var x = document.getElementsByClassName("mySlides");
+			if (n > x.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = x.length} ;
+	  		for (i = 0; i < x.length; i++) {
+	    		x[i].style.display = "none";
+	  		}
+	  		x[slideIndex-1].style.display = "block";
+		}
+	</script>
+</body>
+</html>
